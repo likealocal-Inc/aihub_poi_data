@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>항공폰 도착정보</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.2/dist/tailwind.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class='flex justify-center p-10'>
+      <table class='divide-y divide-gray-200 border-separate border-spacing-2 border border-slate-500'>
+        <thead class="bg-gray-50">
+          <tr>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
+              타입
+            </th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider">
+              데이터
+            </th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+          <tr>
+          <td class="px-6 py-2 border border-slate-700  whitespace-nowrap">항공사</td><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">{{flight_info.airline}}</td></tr>
+          <tr><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">항공기편명</td><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">{{flight_info.flightId}}</td></tr>
+          <tr><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">항예정시간</td><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">{{flight_info.scheduleDateTime}}</td></tr>
+          <tr><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">변경시간</td><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">{{flight_info.estimatedDateTime}}</td></tr>
+          <tr><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">소요시간</td><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">{{flight_info.elapsetime}}</td></tr>
+          <tr><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">출발공항</td><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">{{flight_info.airport}}</td></tr>
+          <tr><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">탑승구</td><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">{{flight_info.gatenumber}}</td></tr>
+          <tr><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">수하물수취대</td><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">{{flight_info.carousel}}</td></tr>
+          <tr><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">출구</td><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">{{flight_info.exitnumber}}</td></tr>
+          <tr><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">운항상태 (도착,결항,지연,회항,착륙)</td><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">{{flight_info.remark}}</td></tr>
+          {{!-- <tr><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">코드쉐어</td><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">{{flight_info.codeshare}}</td></tr> --}}
+          <tr><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">마스터편명</td><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">{{flight_info.masterflightid}}</td></tr>
+          <tr><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">출발지공항코드</td><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">{{flight_info.airportCode}}</td></tr>
+          <tr><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">도시코드<td class="px-6 py-2 border border-slate-700  whitespace-nowrap">{{flight_info.cityCode}}</td></tr>
+          <tr><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">터미널</td><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">{{flight_info.terminalId}}</td></tr>
+          <tr><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">1경유지공항</td><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">{{flight_info.firstopover}}</td></tr>
+          <tr><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">1경유지공항이름</td><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">{{flight_info.firstopovername}}</td></tr>
+          <tr><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">2경유지공항</td><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">{{flight_info.secstopover}}</td></tr>
+          <tr><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">1경유지공항이름<td class="px-6 py-2 border border-slate-700  whitespace-nowrap">{{flight_info.secstopovername}}</td></tr>
+          <tr><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">3경유지공항</td><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">{{flight_info.thistopover}}</td></tr>
+          <tr><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">3경유지공항이름</td><td class="px-6 py-2 border border-slate-700  whitespace-nowrap">{{flight_info.thistopovername}}</td></tr>
+        </tbody>
+       </table>
+    </div>
+  </body>
+</html>
