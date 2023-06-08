@@ -23,6 +23,7 @@ const Modal = ({ open, setOpen, poiNum }: any) => {
         .get(`${publicRuntimeConfig.SERVER_URL}/search/poinum/${poiNum}`)
         .then((res) => {
           setlangData(res.data);
+          window.scrollTo(0, 0);
         });
     }
   }, [open, poiNum]);
@@ -31,35 +32,40 @@ const Modal = ({ open, setOpen, poiNum }: any) => {
     <>
       {open ? (
         <>
-          <div className='absolute top-0 w-full h-full text-white bg-opacity-70 bg-slate-100'>
+          <div className='absolute top-0 z-50 w-full h-full text-white bg-opacity-70 bg-slate-100'>
             <div className='flex items-center justify-center pt-10'>
               <div className='flex flex-col items-center justify-center w-screen text-white rounded-lg bg-slate-800 h-3/4'>
                 <div className='p-11'>
                   <table className='border-1'>
-                    <tr className='text-lg text-center bg-red-300 border-2 border-1'>
-                      <td className='p-3 border-2'>id</td>
-                      <td className='p-3 border-2'>poi id</td>
-                      <td className='p-3 border-2'>lang</td>
-                      <td className='p-3 border-2'>type</td>
-                      <td className='p-3 border-2'>name</td>
-                      <td className='p-3 border-2'>addr</td>
-                      <td className='p-3 border-2'>elseData</td>
-                    </tr>
-                    {langData.map((d, k) => {
-                      return (
-                        <tr key={k}>
-                          <td className='p-3 border-2'>{d.id}</td>
-                          <td className='p-3 border-2 cursor-pointer bg-slate-500'>
-                            {d.poiNum}
-                          </td>
-                          <td className='p-3 border-2'>{d.lang}</td>
-                          <td className='p-3 border-2'>{d.type}</td>
-                          <td className='p-3 border-2'>{d.name}</td>
-                          <td className='p-3 border-2'>{d.addr}</td>
-                          <td className='p-3 border-2'>{d.elseData}</td>
-                        </tr>
-                      );
-                    })}
+                    <thead>
+                      <tr className='text-lg text-center bg-red-300 border-2 border-1'>
+                        <th className='p-3 border-2'>id</th>
+                        <th className='p-3 border-2'>poi id</th>
+                        <th className='p-3 border-2'>lang</th>
+                        <th className='p-3 border-2'>type</th>
+                        <th className='p-3 border-2'>name</th>
+                        <th className='p-3 border-2'>addr</th>
+                        <th className='p-3 border-2'>elseData</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr></tr>
+                      {langData.map((d, k) => {
+                        return (
+                          <tr key={k}>
+                            <td className='p-3 border-2'>{d.id}</td>
+                            <td className='p-3 border-2 cursor-pointer bg-slate-500'>
+                              {d.poiNum}
+                            </td>
+                            <td className='p-3 border-2'>{d.lang}</td>
+                            <td className='p-3 border-2'>{d.type}</td>
+                            <td className='p-3 border-2'>{d.name}</td>
+                            <td className='p-3 border-2'>{d.addr}</td>
+                            <td className='p-3 border-2'>{d.elseData}</td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
                   </table>
                 </div>
                 <button
@@ -119,36 +125,40 @@ const Search = () => {
         </div>
         <div className='h-auto p-3'>
           <table className='border-1'>
-            <tr className='text-lg text-center bg-red-300 border-2 border-1'>
-              <td className='p-3 border-2'>id</td>
-              <td className='p-3 border-2'>poi id</td>
-              <td className='p-3 border-2'>lang</td>
-              <td className='p-3 border-2'>type</td>
-              <td className='p-3 border-2'>name</td>
-              <td className='p-3 border-2'>addr</td>
-              <td className='p-3 border-2'>elseData</td>
-            </tr>
-            {poiData.map((d, k) => {
-              return (
-                <tr key={k}>
-                  <td className='p-3 border-2'>{d.id}</td>
-                  <td
-                    className='p-3 border-2 cursor-pointer bg-slate-500'
-                    onDoubleClick={() => {
-                      setSelectPoiId(d.poiNum);
-                      setOpen(true);
-                    }}
-                  >
-                    {d.poiNum}
-                  </td>
-                  <td className='p-3 border-2'>{d.lang}</td>
-                  <td className='p-3 border-2'>{d.type}</td>
-                  <td className='p-3 border-2'>{d.name}</td>
-                  <td className='p-3 border-2'>{d.addr}</td>
-                  <td className='p-3 border-2'>{d.elseData}</td>
-                </tr>
-              );
-            })}
+            <thead>
+              <tr className='text-lg text-center bg-red-300 border-2 border-1'>
+                <td className='p-3 border-2'>id</td>
+                <td className='p-3 border-2'>poi id</td>
+                <td className='p-3 border-2'>lang</td>
+                <td className='p-3 border-2'>type</td>
+                <td className='p-3 border-2'>name</td>
+                <td className='p-3 border-2'>addr</td>
+                <td className='p-3 border-2'>elseData</td>
+              </tr>
+            </thead>
+            <tbody>
+              {poiData.map((d, k) => {
+                return (
+                  <tr key={k}>
+                    <td className='p-3 border-2'>{d.id}</td>
+                    <td
+                      className='p-3 border-2 cursor-pointer bg-slate-500'
+                      onDoubleClick={() => {
+                        setSelectPoiId(d.poiNum);
+                        setOpen(true);
+                      }}
+                    >
+                      {d.poiNum}
+                    </td>
+                    <td className='p-3 border-2'>{d.lang}</td>
+                    <td className='p-3 border-2'>{d.type}</td>
+                    <td className='p-3 border-2'>{d.name}</td>
+                    <td className='p-3 border-2'>{d.addr}</td>
+                    <td className='p-3 border-2'>{d.elseData}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
           </table>
         </div>
         <Modal open={open} setOpen={setOpen} poiNum={selectPoiId} />
